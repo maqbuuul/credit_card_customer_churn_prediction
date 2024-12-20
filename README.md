@@ -75,9 +75,13 @@ The dataset contains features related to customer demographics, account informat
 2. **Random Forest Classifier**  
 
 ### **Performance Metrics:**
-| Model               | Accuracy  | ROC-AUC   |---|
-| Logistic Regression | 74.94%    | 0.8344    |
-| Random Forest       | 99.74%    | 0.9999    |
+
+```markdown
+| Model               | Accuracy  | ROC-AUC |
+|---------------------|-----------|---------|
+| Logistic Regression | 74.94%    | 0.8344  |
+| Random Forest       | 99.74%    | 0.9999  |
+```
 
 - **Random Forest** was selected as the best-performing model due to its exceptional accuracy and ROC-AUC score.  
 
@@ -90,11 +94,15 @@ A **prediction system** was implemented to provide real-time churn predictions:
   - Probability: Likelihood of churn (e.g., 66% for `Churn`).  
 
 ### **Sample Predictions:**
-| Customer  | Prediction  | Probability |--|
-| Customer 1| No Churn    | 48.41%      |
-| Customer 2| No Churn    | 3.20%       |
-| Customer 3| No Churn    | 49.12%      |
-| Customer 4| Churn       | 66.29%      |
+
+```markdown
+| Customer   | Prediction | Probability |
+|------------|------------|-------------|
+| Customer 1 | No Churn   | 48.41%      |
+| Customer 2 | No Churn   | 3.20%       |
+| Customer 3 | No Churn   | 49.12%      |
+| Customer 4 | Churn      | 66.29%      |
+```
 
 ## **Insights and Recommendations**
 
