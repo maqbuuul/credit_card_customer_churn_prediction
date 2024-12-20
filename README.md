@@ -133,23 +133,6 @@ A **prediction system** was implemented to provide real-time churn predictions:
 2. **Monitor model performance** and retrain with updated data to maintain accuracy.  
 3. Develop a **dashboard** to visualize churn trends and prediction outcomes.  
 
-## **How to Run the Project**
-
-1. Clone the repository:  
-   ```bash
-   git clone https://github.com/your-username/telco-churn-prediction.git
-   cd telco-churn-prediction
-   ```
-
-2. Install required libraries:  
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. Run the prediction system:  
-   ```python
-   python predict_churn.py
-   ```
 
 Feel free to explore the project and share your feedback! 🚀  
 📧 **Contact:** [LinkedIn](https://www.linkedin.com/in/maqbuul/) 
