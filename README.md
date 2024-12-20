@@ -101,7 +101,6 @@ A **prediction system** was implemented to provide real-time churn predictions:
 | Customer 2 | No Churn   | 3.20%       |
 | Customer 3 | No Churn   | 49.12%      |
 | Customer 4 | Churn      | 66.29%      |
-```
 
 ## **Insights and Recommendations**
 
@@ -153,6 +152,6 @@ A **prediction system** was implemented to provide real-time churn predictions:
    ```
 
 Feel free to explore the project and share your feedback! 🚀  
-📧 **Contact:** maqbuul@outlook.com 
+📧 **Contact:** [LinkedIn](https://www.linkedin.com/in/maqbuul/) 
 
 #CustomerChurn #DataScience #MachineLearning #TelecomIndustry
