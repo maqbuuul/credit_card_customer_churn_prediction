@@ -176,4 +176,4 @@ cython_debug/
 
 # Ignore large data files and folders
 data/
-duckdb/
+database/
