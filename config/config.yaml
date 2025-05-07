@@ -1,0 +1,41 @@
+timestamp: '20250507_121500'
+data_paths:
+  data_path: "data/processed/clean_bank_data.csv"
+
+data_ingestion:
+  raw_data_path: 'artifacts/data/raw.csv'
+  train_data_path: 'artifacts/data/train.csv'
+  test_data_path: 'artifacts/data/test.csv'
+
+data_transformation:
+  preprocessor_obj_path: 'artifacts/preprocessor/preprocessor.pkl'
+  preprocessor_cluster_obj_path: 'artifacts/preprocessor/cluster_preprocessor.pkl'
+  preprocessor_reg_obj_path: 'artifacts/preprocessor/reg_preprocessor.pkl'
+  pca_obj_path: 'artifacts/preprocessor/pca.pkl'
+  train_enhanced_data_path: 'artifacts/data/train_enhanced.csv'
+  test_enhanced_data_path: 'artifacts/data/test_enhanced.csv'
+  train_enhanced_cluster_data_path: 'artifacts/data/train_enhanced_cluster.csv'
+  train_enhanced_reg_data_path: 'artifacts/data/train_enhanced_reg.csv'
+  test_enhanced_reg_data_path: 'artifacts/data/test_enhanced_reg.csv'
+
+model_trainer:
+  churn_model_path: 'artifacts/models/churn_model.pkl'
+  revenue_model_path: 'artifacts/models/revenue_model.pkl'
+  cluster_model_path: 'artifacts/models/cluster_model.pkl'
+  churn_model_report_path: 'artifacts/reports/churn_model_report.json'
+  revenue_model_report_path: 'artifacts/reports/revenue_model_report.json'
+  cluster_model_report_path: 'artifacts/reports/cluster_model_report.json'
+  cluster_assignments_path: 'artifacts/data/cluster_assignments.csv'
+
+model_evaluator:
+  churn_evaluation_path: 'artifacts/evaluations/churn_evaluation.json'
+  revenue_evaluation_path: 'artifacts/evaluations/revenue_evaluation.json'
+  integrated_evaluation_path: 'artifacts/evaluations/integrated_evaluation.json'
+  revenue_at_risk_path: 'artifacts/data/revenue_at_risk.csv'
+
+visualizer:
+  output_dir: 'artifacts/visualizations'
+  churn_viz_dir: 'artifacts/visualizations/churn'
+  revenue_viz_dir: 'artifacts/visualizations/revenue'
+  cluster_viz_dir: 'artifacts/visualizations/cluster'
+  integrated_viz_dir: 'artifacts/visualizations/integrated'

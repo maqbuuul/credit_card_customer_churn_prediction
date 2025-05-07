@@ -1,140 +1,175 @@
-# **Telecom Customer Churn Prediction Project** 📞📊
+# Credit Card Customer Analytics Framework
 
-## **Overview**
+A comprehensive modular framework for predicting customer churn, assessing revenue impact, and identifying customer segments for targeted retention strategies.
 
-This project focuses on predicting customer churn in the telecom industry using a dataset that includes demographic, account, and service information. The primary goal is to identify at-risk customers to implement proactive retention strategies, reducing churn-related revenue losses.
+## Project Overview
 
-## **Table of Contents**
+This framework provides a complete end-to-end solution for credit card customer analytics through three complementary modeling components:
 
-1. [Problem Statement](#problem-statement)  
-2. [Dataset Overview](#dataset-overview)  
-3. [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)  
-4. [Data Preprocessing and Feature Engineering](#data-preprocessing-and-feature-engineering)  
-5. [Model Development and Evaluation](#model-development-and-evaluation)  
-6. [Prediction System](#prediction-system)  
-7. [Insights and Recommendations](#insights-and-recommendations)  
-8. [Conclusion and Next Steps](#conclusion-and-next-steps)
+1. **Churn Prediction (Classification)**: Predicts which customers are likely to discontinue their credit card service
+2. **Revenue Impact Assessment (Regression)**: Quantifies the potential revenue loss from customer attrition
+3. **Customer Segmentation (Clustering)**: Identifies distinct customer segments to enable targeted retention strategies
 
-## **Problem Statement**
+## Project Structure
 
-**Goal:**  
-Predict customer churn based on historical data to help retain at-risk customers.  
+```
+credit-card-analytics/
+├── config/                    # Configuration files
+│   └── config.yaml            # Main configuration
+├── artifacts/                 # Model outputs and artifacts (created at runtime)
+├── logs/                      # Log files (created at runtime)
+├── src/                       # Source code
+│   ├── components/
+│   │   ├── data_ingestion.py  # Data loading and splitting
+│   │   ├── data_transformation.py  # Feature engineering and preprocessing
+│   │   ├── model_trainer.py   # Model training and tuning
+│   │   ├── model_evaluator.py # Model evaluation
+│   │   └── visualizer.py      # Visualization generation
+│   │
+│   ├── pipeline/
+│   │   ├── train_pipeline.py  # End-to-end training orchestration
+│   │   └── predict_pipeline.py # Prediction pipeline
+│   │
+│   ├── exception.py           # Custom exception handling
+│   ├── logger.py              # Logging functionality
+│   └── utils.py               # Utility functions
+│
+└── main.py                    # Main executable
+```
 
-**Business Impact:**  
-- Reduce customer churn to increase customer lifetime value (CLV).  
-- Implement targeted retention strategies for high-risk customers.  
+## Installation
 
-## **Dataset Overview**
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/credit-card-analytics.git
+cd credit-card-analytics
+```
 
-The dataset contains features related to customer demographics, account information, and service usage.  
-- **Target Variable:** `Churn` (binary: Yes/No)  
-- **Key Features:**  
-  - **Demographic Data:** Gender, SeniorCitizen, Partner, Dependents  
-  - **Account Information:** Contract, PaymentMethod, MonthlyCharges, TotalCharges  
-  - **Service Data:** InternetService, OnlineBackup, DeviceProtection  
+2. Create a virtual environment and activate it:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-**Steps in Data Cleaning:**  
-1. Converted `TotalCharges` to numeric and imputed missing values.  
-2. Handled duplicate records.  
-3. Capped outliers using the interquartile range (IQR) method.
+3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## **Exploratory Data Analysis (EDA)**
+## Usage
 
-### **Key Findings:**
-1. **Churn Distribution:**  
-   - Approximately 27% of customers churned, indicating class imbalance.  
+### Training
 
-2. **Influential Features:**  
-   - **MonthlyCharges:** Higher monthly charges correlated with increased churn rates.  
-   - **Tenure:** Customers with shorter tenure were more likely to churn.  
-   - **Contract Type:** Month-to-month contracts had the highest churn rates.
+To train the models with default settings:
 
-**Visualizations:**  
-- Count plot of churn distribution.  
-- Box plot of `MonthlyCharges` vs. `Churn`.  
-- Heatmap showing correlations between numerical features.
+```python
+from src.pipeline.train_pipeline import TrainingPipeline
 
-## **Data Preprocessing and Feature Engineering**
+# Initialize and run the pipeline
+pipeline = TrainingPipeline()
+results = pipeline.run(data_path="path/to/your/data.csv")
+```
 
-1. **Encoding Categorical Variables:**  
-   - Used `LabelEncoder` for categorical features. Saved encoders for future use.  
+Or run from the command line:
 
-2. **Feature Engineering:**  
-   - Created a new feature `TenureGroup` to categorize customers based on tenure.  
+```bash
+python main.py --mode train --data_path path/to/your/data.csv
+```
 
-3. **Scaling Numerical Features:**  
-   - Applied `MinMaxScaler` to normalize `tenure`, `MonthlyCharges`, and `TotalCharges`.  
+### Making Predictions
 
-4. **Addressing Class Imbalance:**  
-   - Used **SMOTE (Synthetic Minority Oversampling Technique)** to balance the dataset.
+```python
+from src.pipeline.predict_pipeline import PredictionPipeline
+import pandas as pd
 
-## **Model Development and Evaluation**
+# Load data to predict
+data = pd.read_csv("path/to/new_customers.csv")
 
-### **Models Evaluated:**
-1. **Logistic Regression**  
-2. **Random Forest Classifier**  
+# Initialize prediction pipeline
+pipeline = PredictionPipeline()
 
-### **Performance Metrics:**
+# Generate predictions
+predictions = pipeline.predict(data)
 
-| Model               | Accuracy  | ROC-AUC |
-|---------------------|-----------|---------|
-| Logistic Regression | 74.94%    | 0.8344  |
-| Random Forest       | 99.74%    | 0.9999  |
+# Save predictions
+pipeline.save_predictions(predictions, "path/to/save/predictions.csv")
+```
 
+Or run from the command line:
 
-- **Random Forest** was selected as the best-performing model due to its exceptional accuracy and ROC-AUC score.  
+```bash
+python main.py --mode predict --data_path path/to/new_customers.csv --output_path path/to/predictions.csv
+```
 
-## **Prediction System**
+## Input Data Format
 
-A **prediction system** was implemented to provide real-time churn predictions:  
-- **Inputs:** Customer data including tenure, monthly charges, contract type, and more.  
-- **Outputs:**  
-  - Prediction: `Churn` or `No Churn`.  
-  - Probability: Likelihood of churn (e.g., 66% for `Churn`).  
+The expected data format includes the following key features:
 
-### **Sample Predictions:**
+- `customer_age`: Age of the customer
+- `gender`: Customer gender
+- `dependent_count`: Number of dependents
+- `education_level`: Education level
+- `marital_status`: Marital status
+- `income_category`: Income bracket
+- `card_category`: Card type (Blue, Silver, Gold, etc.)
+- `months_on_book`: Months as a customer
+- `total_relationship_count`: Number of products held
+- `months_inactive_12_mon`: Months of inactivity
+- `contacts_count_12_mon`: Contacts with bank
+- `credit_limit`: Credit limit
+- `total_revolving_bal`: Revolving balance
+- `avg_utilization_ratio`: Average utilization ratio
+- `total_trans_amt`: Total transaction amount
+- `total_trans_ct`: Total transaction count
+- `total_ct_chng_q4_q1`: Change in transaction count (Q4 over Q1)
+- `total_amt_chng_q4_q1`: Change in transaction amount (Q4 over Q1)
 
+For training data, additional features required:
+- `churn_flag`: Whether the customer churned (1) or not (0)
+- `est_annual_revenue`: Estimated annual revenue
 
-| Customer   | Prediction | Probability |
-|------------|------------|-------------|
-| Customer 1 | No Churn   | 48.41%      |
-| Customer 2 | No Churn   | 3.20%       |
-| Customer 3 | No Churn   | 49.12%      |
-| Customer 4 | Churn      | 66.29%      |
+## Configuration
 
-## **Insights and Recommendations**
+The `config/config.yaml` file allows customization of:
 
-### **Insights from Model Evaluation:**
-1. **High Performance:**  
-   - Random Forest demonstrated near-perfect accuracy (**99.74%**) and ROC-AUC (**0.9999**).  
-2. **Churn Characteristics:**  
-   - High churn probability is associated with customers who:  
-     - Have short tenure.  
-     - Use month-to-month contracts.  
-     - Pay higher monthly charges.  
+- Data paths
+- Model parameters
+- Preprocessing steps
+- Output directories
 
-### **Recommendations:**
-1. **Retention Strategies:**  
-   - Offer discounts or loyalty programs for month-to-month customers.  
-   - Implement personalized retention campaigns for customers with high churn probabilities.  
+## Outputs
 
-2. **Model Deployment:**  
-   - Deploy the **Random Forest model** for real-time churn prediction.  
-   - Use probability thresholds to prioritize high-risk customers for retention efforts.
+The framework generates the following outputs in the `artifacts` directory:
 
-## **Conclusion and Next Steps**
+- **Trained Models**: Serialized models for churn prediction, revenue prediction, and clustering
+- **Preprocessors**: Serialized preprocessing pipelines
+- **Evaluations**: Model performance metrics and statistics
+- **Visualizations**: Performance charts, feature importance plots, and segment visualizations
+- **Reports**: Detailed model reports and business insights
 
-### **Conclusion:**
-- The project successfully identified high-risk customers using Random Forest, achieving exceptional predictive performance.  
-- Insights from EDA revealed actionable patterns in customer churn behavior.  
+## Performance Metrics
 
-### **Next Steps:**
-1. **Deploy the model in production** to enable real-time churn predictions.  
-2. **Monitor model performance** and retrain with updated data to maintain accuracy.  
-3. Develop a **dashboard** to visualize churn trends and prediction outcomes.  
+### Churn Model
+- ROC-AUC
+- Accuracy, Precision, Recall
+- F1 Score
+- Confusion Matrix
 
+### Revenue Model
+- RMSE (Root Mean Squared Error)
+- R² (Coefficient of Determination)
+- Mean Absolute Percentage Error
 
-Feel free to explore the project and share your feedback! 🚀  
-📧 **Contact:** [LinkedIn](https://www.linkedin.com/in/maqbuul/) 
+### Customer Segmentation
+- Silhouette Score
+- Inertia
+- Cluster Distribution
 
-#CustomerChurn #DataScience #MachineLearning #TelecomIndustry
+### Integrated Metrics
+- Total Revenue at Risk
+- Revenue at Risk by Segment
+- Customer Distribution
+
+## License
+
+[MIT License](LICENSE)

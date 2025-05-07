@@ -1,0 +1,33 @@
+{
+    "total_revenue_at_risk": 54531.80246189571,
+    "avg_revenue_at_risk": 26.915993317816245,
+    "pct_high_risk": 15.695952615992104,
+    "risk_matrix_revenue": {
+        "High Risk": {
+            "Low Value": 10029.59822467708,
+            "Medium-Low Value": 9419.180501181978,
+            "Medium-High Value": 7781.046719629163,
+            "High Value": 24737.658631525686
+        },
+        "Low Risk": {
+            "Low Value": 187.8416533700184,
+            "Medium-Low Value": 658.7540300584449,
+            "Medium-High Value": 458.39495178767294,
+            "High Value": 1259.3277496656694
+        }
+    },
+    "risk_matrix_count": {
+        "High Risk": {
+            "Low Value": 192,
+            "Medium-Low Value": 49,
+            "Medium-High Value": 24,
+            "High Value": 53
+        },
+        "Low Risk": {
+            "Low Value": 315,
+            "Medium-Low Value": 457,
+            "Medium-High Value": 482,
+            "High Value": 454
+        }
+    }
+}
