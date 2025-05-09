@@ -8,7 +8,7 @@ Through advanced exploratory data analysis, statistical validation, and a multi-
 
 1. **Identifies customers at risk of churn** with 97.2% accuracy and 0.99 ROC-AUC
 2. **Quantifies the revenue impact** of potential attrition with 94.1% accuracy (5.9% MAPE)
-3. **Segments customers** into actionable groups for targeted retention strategies
+3. **Segment customers** into actionable groups for targeted retention strategies
 4. **Optimizes retention ROI** through value-based prioritization
 
 The analysis revealed key behavioral patterns, relationship metrics, and revenue impacts driving customer attrition, enabling targeted interventions across diverse customer segments.
@@ -40,14 +40,14 @@ The dataset contains 10,127 credit card customer records with 21 features spanni
 
 The bank faces a 16.1% customer churn rate, significantly exceeding the industry benchmark of 10%. This elevated churn rate represents substantial revenue leakage, especially considering acquisition costs are typically 5-25 times higher than retention costs.
 
-![Churn Distribution](https://example.com/churn_distribution.png)
+![Churn Distribution](artifacts/visualizations/churn/churn_dist.png)
 
 ### Demographic Influences
 
-While demographic analysis revealed minimal differences in churn rates across age groups, education level and income category showed noteworthy patterns:
+While demographic analysis revealed minimal differences in churn rates across age groups, education level, and income category showed noteworthy patterns:
 
 - Doctorate-level customers have the highest churn rate (21.1%)
-- Income analysis revealed customers earning $60K-$80K have the lowest churn rate (13.5%)
+- Income analysis revealed customers earning $ 60 K-$80 K have the lowest churn rate (13.5%)
 - Both extremes of the income spectrum showed elevated churn propensity
 
 These patterns demonstrate the need for segment-specific retention approaches rather than demographic-based targeting.
@@ -56,19 +56,19 @@ These patterns demonstrate the need for segment-specific retention approaches ra
 
 Transaction patterns emerged as the strongest predictors of customer retention:
 
-- Significant transaction gap exists between retained (68.7 avg transactions) and churned customers (44.9 avg transactions)
+- A significant transaction gap exists between retained (68.7 average transactions) and churned customers (44.9 average transactions)
 - Months inactive is a powerful predictor - customers with 0 inactive months show 51.7% churn versus just 4.5% for customers with 1 inactive month
 - Very low utilization ratio (<0.02) customers show 36.6% churn rate vs. ~9% for higher utilization customers
 
-![Transaction Analysis](https://example.com/transaction_analysis.png)
+![Transaction Analysis](artifacts/visualizations/churn/engagement.png)
 
 ### Relationship Depth
 
 The analysis revealed the importance of product relationships and active usage in retention:
 
-- Single-product customers have highest churn rate (25.6%), decreasing to 10.5% for those with 6 products
+- Single-product customers have the highest churn rate (25.6%), decreasing to 10.5% for those with 6 products
 - Customer tenure shows minimal impact on churn, with rates stable (14.7%-17.6%) across all tenure ranges
-- Platinum cardholders have highest churn rate (25%), while Silver shows lowest (14.8%)
+- Platinum cardholders have the highest churn rate (25%), while Silver shows the lowest (14.8%)
 - Very low revolving balance (<$1,037) correlates with high churn (28.9%)
 
 These findings challenge conventional wisdom that premium customers and long-tenure relationships are most stable.
@@ -81,7 +81,7 @@ Churned customers represent 9.8% of total revenue ($272.6K at risk), with distin
 - U-shaped pattern in revenue tiers: highest churn at extremes (Q1: 37.6%, Q5: 12.5%)
 - Middle segments show exceptional loyalty (~95% retention)
 
-![Revenue Distribution](https://example.com/revenue_distribution.png)
+
 
 ### Correlation Analysis
 
@@ -109,7 +109,7 @@ I implemented a robust machine learning pipeline with extensive feature engineer
   - 0.99 ROC-AUC score
   - 92.1% precision and 90.2% recall for churn class
 
-![Model Performance](https://example.com/model_performance.png)
+![Model Performance](artifacts/visualizations/churn/confusion_matrix.png)
 
 Feature importance analysis identified key churn predictors:
 1. Total transaction count
@@ -128,6 +128,8 @@ To quantify the financial impact of churn, I developed a regression model predic
   - $9.38 RMSE
   - 0.996 R² score
   - 5.9% Mean Absolute Percentage Error
+
+![Revenue Distribution](artifacts/visualizations/revenue/actual_vs_predicted.png)
 
 This accurate revenue prediction enables precise quantification of attrition risk in financial terms.
 
@@ -169,7 +171,7 @@ Based on the comprehensive analysis, I developed targeted recommendations across
 
 - Focus retention resources on high-value segments with elevated churn risk
 - Implement differentiated retention offers based on customer lifetime value
-- Develop ROI-based retention budget allocation model
+- Develop an ROI-based retention budget allocation model
 
 ## Implementation Architecture
 
@@ -222,10 +224,10 @@ Building on this work, future extensions could include:
 
 ## Conclusion
 
-This credit card customer retention analytics project demonstrates the power of combining data science with business domain knowledge. By leveraging advanced exploratory analysis, statistical validation, and a multi-stage modeling approach, I've created a solution that not only accurately predicts customer churn but quantifies its financial impact and enables targeted, cost-effective interventions.
+This credit card customer retention analytics project demonstrates the power of combining data science with business domain knowledge. By leveraging advanced exploratory analysis, statistical validation, and a multi-stage modeling approach, I've created a solution that not only accurately predicts customer churn but also quantifies its financial impact and enables targeted, cost-effective interventions.
 
 The comprehensive framework developed provides actionable insights for retention strategy, with the potential to significantly improve customer loyalty and protect revenue in the competitive credit card market.
 
 ---
 
-*This project was developed by [Your Name], a data scientist with expertise in financial analytics and customer behavior modeling.*
+*This project was developed by **Abdiwahid Ali**, a data scientist with expertise in financial analytics and customer behavior modeling.*
